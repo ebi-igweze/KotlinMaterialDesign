@@ -1,0 +1,28 @@
+<resources>
+
+    <!-- Application theme for all devices: both before and after lollipop (v21). -->
+    <style name="ParentMaterialTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <!-- Text color of Toolbar title -->
+        <item name="android:textColorPrimary">#FFF</item>
+        <!-- Text color of navigation drawer icon -->
+        <item name="android:textColorSecondary">#FFF</item>
+    </style>
+
+    <style name="PopupTheme" parent="ThemeOverlay.AppCompat.Light">
+        <!-- text color of popup menu -->
+        <item name="android:textColorPrimary">#212121</item>
+        <!-- background color of popup menu -->
+        <item name="android:background">#FFF</item>
+    </style>
+
+    <!-- Base application theme: for android version before lollipop (v21) -->
+    <style name="MaterialTheme" parent="ParentMaterialTheme">
+
+    </style>
+</resources>
