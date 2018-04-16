@@ -2,6 +2,8 @@ package com.igweze.ebi.kotlinmaterialdesign
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.DefaultItemAnimator
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
@@ -20,9 +22,19 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         // set action bar title and toolbar subtitle
-        supportActionBar?.title = "Welcome"
+        supportActionBar?.title = "Home Page"
         toolbar.subtitle = "Tasks!!!"
 
+        setupRecyclerView()
+    }
+
+    private fun setupRecyclerView() {
+        val recyclerView = recyclerView
+        val adapter = RecyclerAdapter(this, LandScape.data.toList())
+        recyclerView.adapter = adapter
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        recyclerView.layoutManager = layoutManager
+        recyclerView.itemAnimator = DefaultItemAnimator()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -37,6 +49,7 @@ class MainActivity : AppCompatActivity() {
             R.id.edit -> "Edited"
             R.id.settings -> "Settings"
             R.id.exit -> "Exited"
+            R.id.grid -> "Switch to Grid"
             else -> ""
         } + ": Item Clicked"
 

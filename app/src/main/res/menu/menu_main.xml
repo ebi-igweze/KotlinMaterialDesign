@@ -16,14 +16,19 @@
         app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/grid"
+        android:title="@string/switch_to_grid"
+        android:orderInCategory="102"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/settings"
         android:title="@string/settings"
-        android:orderInCategory="102"
+        android:orderInCategory="103"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/edit"
-        android:orderInCategory="103"
+        android:orderInCategory="104"
         android:title="@string/edit"
         app:showAsAction="never" />
 

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+    android:layout_marginTop="5dp"
+    android:padding="3dp"
+    card_view:cardCornerRadius="5dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:padding="3dp"
+        >
+
+        <ImageView
+            android:id="@+id/imgRow"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/thumb_1_0"
+            android:contentDescription="@string/thumbnail"  />
+
+        <TextView
+            android:id="@+id/imgTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/title"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintStart_toEndOf="@id/imgRow"
+            />
+        <TextView
+            android:id="@+id/imgDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/description"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            card_view:layout_constraintTop_toBottomOf="@id/imgTitle"
+            card_view:layout_constraintStart_toEndOf="@id/imgRow"
+            />
+
+        <ImageView
+            android:id="@+id/iconDelete"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="5dp"
+            android:contentDescription="@string/delete"
+            android:src="@drawable/ic_delete"
+            android:tint="@color/cardview_dark_background"
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <ImageView
+            android:id="@+id/iconAdd"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="7dp"
+            android:contentDescription="@string/delete"
+            android:src="@drawable/ic_make_copy"
+            android:tint="@color/cardview_dark_background"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@id/iconDelete"
+            />
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>
