@@ -22,6 +22,12 @@
         app:showAsAction="never"/>
 
     <item
+        android:id="@+id/conditional"
+        android:orderInCategory="102"
+        android:title="@string/conditional_views"
+        app:showAsAction="never"/>
+
+    <item
         android:id="@+id/linearVertical"
         android:title="@string/linear_vertical"
         android:orderInCategory="102"

@@ -1,6 +1,7 @@
 package com.igweze.ebi.kotlinmaterialdesign
 
 import android.os.Bundle
+import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.*
 import android.view.Menu
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         toolbar.subtitle = "Tasks!!!"
         recyclerView.itemAnimator = DefaultItemAnimator()
 
+        setupDrawer()
         showLandscape()
     }
 
@@ -55,10 +57,17 @@ class MainActivity : AppCompatActivity() {
             else -> ""
         }
 
-        if (layoutView == "" && item?.itemId == R.id.showLandscape) showLandscape()
+        if (layoutView == "")
+                if (item?.itemId == R.id.showLandscape) showLandscape()
+                else if (item?.itemId == R.id.conditional) showConditionalViews()
         else if (layoutView != "" && item?.itemId != R.id.showLandscape) setupRecyclerView()
 
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun setupDrawer() {
+        val drawerFragment = navFragment as NavigationFragment
+        drawerFragment.setupDrawer(R.id.navFragment, navDrawer as DrawerLayout, toolbar as Toolbar)
     }
 
     private fun setupRecyclerView() {
@@ -85,6 +94,11 @@ class MainActivity : AppCompatActivity() {
     private fun switchToLinear() {
         val orientation = if (layoutView == "LinearVertical") LinearLayoutManager.VERTICAL else LinearLayoutManager.HORIZONTAL
         recyclerView.layoutManager = LinearLayoutManager(this, orientation, false)
+    }
+
+    private fun showConditionalViews() {
+        recyclerView.adapter = ConditionalRecyclerAdapter(this, LandScape.data.toMutableList())
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     }
 
     private fun switchToGrid() {

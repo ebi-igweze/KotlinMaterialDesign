@@ -14,4 +14,9 @@
     <string name="staggered_vertical">Staggered Vertical</string>
     <string name="staggered_horizontal">Staggered Horizontal</string>
     <string name="show_landscape">Show Landscape</string>
+    <string name="conditional_views">Conditional Views</string>
+    <string name="image_icon">Image icon</string>
+    <string name="profile_icon">Profile Icon</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
