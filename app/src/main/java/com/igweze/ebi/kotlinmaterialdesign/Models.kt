@@ -23,6 +23,26 @@ data class LandScape(val id: Int, val title: String, val description: String, va
             }
         }
     }
+}
 
+data class Animal(val id: Int, val title: String, val description: String, val imageSrc: Int) {
 
+    companion object {
+        private val images = arrayOf(
+                R.drawable.ani_cat_one, R.drawable.ani_cat_two,
+                R.drawable.ani_cat_three, R.drawable.ani_cat_four,
+                R.drawable.ani_cat_five, R.drawable.ani_cat_six,
+                R.drawable.ani_cat_seven, R.drawable.ani_deer_one,
+                R.drawable.ani_deer_two, R.drawable.ani_deer_three,
+                R.drawable.ani_deer_four)
+
+        val data = buildSequence {
+            for (i in 0 until images.size) {
+                val title = "Landscape $i"
+                val description = "Some description for animal $i"
+                val item = Animal(i, title, description,  images[i])
+                yield(item)
+            }
+        }
+    }
 }

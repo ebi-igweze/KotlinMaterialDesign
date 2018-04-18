@@ -16,25 +16,52 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/grid"
-        android:title="@string/switch_to_grid"
+        android:id="@+id/showLandscape"
+        android:orderInCategory="102"
+        android:title="@string/show_landscape"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/linearVertical"
+        android:title="@string/linear_vertical"
         android:orderInCategory="102"
         app:showAsAction="never" />
     <item
+        android:id="@+id/linearHorizontal"
+        android:title="@string/linear_horizontal"
+        android:orderInCategory="103"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/grid"
+        android:title="@string/switch_to_grid"
+        android:orderInCategory="104"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/staggeredVertical"
+        android:title="@string/staggered_vertical"
+        android:orderInCategory="105"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/staggeredHorizontal"
+        android:title="@string/staggered_horizontal"
+        android:orderInCategory="106"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/settings"
         android:title="@string/settings"
-        android:orderInCategory="103"
+        android:orderInCategory="107"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/edit"
-        android:orderInCategory="104"
+        android:orderInCategory="108"
         android:title="@string/edit"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/exit"
-        android:orderInCategory="105"
+        android:orderInCategory="109"
         android:title="@string/exit"
         app:showAsAction="never" />
 

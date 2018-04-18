@@ -9,4 +9,9 @@
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="switch_to_grid">Switch to grid</string>
+    <string name="linear_vertical">Linear Vertical</string>
+    <string name="linear_horizontal">Linear Horizontal</string>
+    <string name="staggered_vertical">Staggered Vertical</string>
+    <string name="staggered_horizontal">Staggered Horizontal</string>
+    <string name="show_landscape">Show Landscape</string>
 </resources>

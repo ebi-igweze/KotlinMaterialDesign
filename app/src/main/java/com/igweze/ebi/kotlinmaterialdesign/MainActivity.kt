@@ -2,15 +2,14 @@ package com.igweze.ebi.kotlinmaterialdesign
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.DefaultItemAnimator
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.Toolbar
+import android.support.v7.widget.*
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    private var layoutView = "LinearVertical"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,17 +23,9 @@ class MainActivity : AppCompatActivity() {
         // set action bar title and toolbar subtitle
         supportActionBar?.title = "Home Page"
         toolbar.subtitle = "Tasks!!!"
+        recyclerView.itemAnimator = DefaultItemAnimator()
 
         setupRecyclerView()
-    }
-
-    private fun setupRecyclerView() {
-        val recyclerView = recyclerView
-        val adapter = RecyclerAdapter(this, LandScape.data.toList())
-        recyclerView.adapter = adapter
-        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        recyclerView.layoutManager = layoutManager
-        recyclerView.itemAnimator = DefaultItemAnimator()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -49,12 +40,61 @@ class MainActivity : AppCompatActivity() {
             R.id.edit -> "Edited"
             R.id.settings -> "Settings"
             R.id.exit -> "Exited"
-            R.id.grid -> "Switch to Grid"
             else -> ""
         } + ": Item Clicked"
 
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 
+        // show different layout managers
+        layoutView = when (item?.itemId) {
+            R.id.grid -> "Grid"
+            R.id.linearVertical -> "LinearVertical"
+            R.id.linearHorizontal -> "LinearHorizontal"
+            R.id.staggeredVertical -> "StaggeredGridVertical"
+            R.id.staggeredHorizontal -> "StaggeredGridHorizontal"
+            else -> ""
+        }
+
+        if (layoutView == "" && item?.itemId == R.id.showLandscape) showLandscape()
+        else if (layoutView != "" && item?.itemId != R.id.showLandscape) setupRecyclerView()
+
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun setupRecyclerView() {
+        // setup recycler view adapter
+        val adapter = AnimalRecyclerAdapter(this, Animal.data.toList())
+        recyclerView.adapter = adapter
+
+        when(layoutView) {
+            "LinearVertical",
+            "LinearHorizontal" -> switchToLinear()
+            "Grid" -> switchToGrid()
+            "StaggeredGridVertical",
+            "StaggeredGridHorizontal" -> switchToStaggeredGrid()
+            else -> throw IllegalArgumentException("layout view")
+        }
+    }
+
+    private fun showLandscape() {
+        val adapter = LandscapeRecyclerAdapter(this, LandScape.data.toList())
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+    }
+
+    private fun switchToLinear() {
+        val orientation = if (layoutView == "LinearVertical") LinearLayoutManager.VERTICAL else LinearLayoutManager.HORIZONTAL
+        recyclerView.layoutManager = LinearLayoutManager(this, orientation, false)
+    }
+
+    private fun switchToGrid() {
+        val colSpan = 2
+        recyclerView.layoutManager = GridLayoutManager(this, colSpan, GridLayoutManager.VERTICAL, false)
+    }
+
+    private fun switchToStaggeredGrid() {
+        val spanCount = 2
+        val orientation = if (layoutView == "StaggeredGridVertical") StaggeredGridLayoutManager.VERTICAL else StaggeredGridLayoutManager.HORIZONTAL
+        recyclerView.layoutManager = StaggeredGridLayoutManager(spanCount, orientation)
     }
 }
