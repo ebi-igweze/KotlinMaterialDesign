@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 
 
-class LandscapeRecyclerAdapter(ctx: Context, val data: List<LandScape>):  RecyclerView.Adapter<LandscapeRecyclerAdapter.LandscapeViewHolder>() {
+class LandscapeRecyclerAdapter(ctx: Context, val data: MutableList<LandScape>):  RecyclerView.Adapter<LandscapeRecyclerAdapter.LandscapeViewHolder>() {
 
     private val inflater = LayoutInflater.from(ctx)
 
@@ -21,16 +21,29 @@ class LandscapeRecyclerAdapter(ctx: Context, val data: List<LandScape>):  Recycl
     override fun onBindViewHolder(holder: LandscapeViewHolder?, position: Int) {
         val landscape = data[position]
         holder?.setData(landscape, position)
+        holder?.setListeners()
     }
 
     override fun getItemCount(): Int = data.size
 
-    class LandscapeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    fun addItem(position: Int, landscape: LandScape) {
+        data.add(position,landscape)
+        notifyItemInserted(position)
+        notifyItemRangeChanged(position, data.size)
+    }
+
+    fun removeItem(position: Int) {
+        data.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, data.size)
+    }
+
+    inner class LandscapeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val title: TextView = view.findViewById(R.id.imgTitle)
         private val image: ImageView = view.findViewById(R.id.imgRow)
-//        private val iconAdd: ImageView = view.findViewById(R.id.iconAdd)
-//        private val iconDelete: ImageView = view.findViewById(R.id.iconDelete)
+        private val iconAdd: ImageView = view.findViewById(R.id.iconAdd)
+        private val iconDelete: ImageView = view.findViewById(R.id.iconDelete)
         private val description: TextView = view.findViewById(R.id.imgDescription)
         private var itemPosition = 0
         private lateinit var current: LandScape
@@ -41,6 +54,15 @@ class LandscapeRecyclerAdapter(ctx: Context, val data: List<LandScape>):  Recycl
             title.text = item.title
             description.text = item.description
             image.setImageResource(item.imageSrc)
+        }
+
+        fun setListeners() {
+            iconAdd.setOnClickListener {
+                addItem(itemPosition, current)
+            }
+            iconDelete.setOnClickListener {
+                removeItem(itemPosition)
+            }
         }
     }
 }

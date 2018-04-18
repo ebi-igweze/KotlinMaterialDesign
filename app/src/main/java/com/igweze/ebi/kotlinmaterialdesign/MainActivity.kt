@@ -9,7 +9,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private var layoutView = "LinearVertical"
+    private var layoutView = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         toolbar.subtitle = "Tasks!!!"
         recyclerView.itemAnimator = DefaultItemAnimator()
 
-        setupRecyclerView()
+        showLandscape()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showLandscape() {
-        val adapter = LandscapeRecyclerAdapter(this, LandScape.data.toList())
+        val adapter = LandscapeRecyclerAdapter(this, LandScape.data.toMutableList())
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     }
