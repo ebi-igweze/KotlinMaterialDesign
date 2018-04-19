@@ -3,6 +3,6 @@
 
     <!-- Base app theme for devices from lollipop and above: (^v21) -->
     <style name="MaterialTheme" parent="ParentMaterialTheme">
-
+        <item name="android:colorControlHighlight">#FF521E</item>
     </style>
 </resources>

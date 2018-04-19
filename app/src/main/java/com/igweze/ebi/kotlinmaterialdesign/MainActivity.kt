@@ -1,5 +1,6 @@
 package com.igweze.ebi.kotlinmaterialdesign
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.AppCompatActivity
@@ -36,6 +37,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item?.itemId == R.id.animation) {
+            val intent = Intent(this, AnimationActivity::class.java)
+            startActivity(intent)
+            return super.onOptionsItemSelected(item)
+        }
+
         val message = when (item?.itemId) {
             R.id.discard -> "Discarded"
             R.id.search -> "Searched"

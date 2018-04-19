@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.igweze.ebi.kotlinmaterialdesign.AnimationActivity"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include android:id="@+id/toolbar" layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+                <Button
+                    android:id="@+id/explodeKotlin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/explode_kotlin"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/explodeXml"
+                    />
+
+                <Button
+                    android:id="@+id/explodeXml"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/explode_xml"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/explodeKotlin"
+                    />
+
+                <Button
+                    android:id="@+id/slideKotlin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/slide_kotlin"
+                    app:layout_constraintTop_toBottomOf="@id/explodeKotlin"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/explodeKotlin"
+                    />
+
+                <Button
+                    android:id="@+id/slideXml"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/slide_xml"
+                    app:layout_constraintTop_toBottomOf="@id/explodeXml"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/slideKotlin"
+                    />
+
+
+                <Button
+                    android:id="@+id/fadeKotlin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fade_kotlin"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/slideKotlin"
+                    app:layout_constraintEnd_toEndOf="@id/slideKotlin"
+                    />
+
+                <Button
+                    android:id="@+id/fadeXml"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fade_xml"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/slideXml"
+                    app:layout_constraintStart_toEndOf="@id/slideKotlin"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/sharedLinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fadeKotlin"
+                    >
+
+                    <ImageView
+                        android:id="@+id/imgSharedItem"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/star"
+                        android:layout_marginEnd="5dp"
+                        android:contentDescription="@string/description"
+                        android:tint="@color/colorAccent"
+                        />
+
+                    <TextView
+                        android:id="@+id/textSharedElement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:text="@string/shared_element"
+                        />
+
+                </LinearLayout>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/rippleBorder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:padding="16dp"
+                android:text="@string/ripple_with_border"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                />
+
+            <TextView
+                android:id="@+id/rippleWOBorder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:padding="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:text="@string/ripple_without_border"
+                android:clickable="true"
+                android:focusable="true"
+                />
+
+            <TextView
+                android:id="@+id/customRippleBorder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:padding="16dp"
+                android:background="@drawable/ripple_with_border"
+                android:text="@string/custom_ripple_with_border"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <TextView
+                android:id="@+id/customRippleWOBorder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:padding="16dp"
+                android:background="@drawable/ripple_without_border"
+                android:text="@string/ripple_without_border"
+                android:clickable="true"
+                android:focusable="true"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

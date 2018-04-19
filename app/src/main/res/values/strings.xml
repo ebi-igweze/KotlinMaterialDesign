@@ -19,4 +19,15 @@
     <string name="profile_icon">Profile Icon</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="explode_kotlin">Explode - Kotlin</string>
+    <string name="explode_xml">Explode - XML</string>
+    <string name="slide_xml">Slide - XML</string>
+    <string name="slide_kotlin">Slide - Kotlin</string>
+    <string name="fade_xml">Fade - XML</string>
+    <string name="fade_kotlin">Fade - Kotlin</string>
+    <string name="shared_element">Shared Element</string>
+    <string name="ripple_with_border">Ripple With Border</string>
+    <string name="ripple_without_border">Ripple Without Border</string>
+    <string name="custom_ripple_with_border">Custom Ripple With Border</string>
+    <string name="animations">Animations</string>
 </resources>
